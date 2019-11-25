@@ -1,9 +1,14 @@
 version: 2
 jobs:
-  build:
-    filters:
+      - test_dev:
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:  # only branches matching the below regex filters will run
+                - filters:
           branches:
             only: master
+jobs:
+  build:
     docker:
       - image: circleci/node:10
     working_directory: ~/gatsby-site
