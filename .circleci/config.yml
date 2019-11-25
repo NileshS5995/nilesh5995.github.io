@@ -1,12 +1,9 @@
 version: 2
 jobs:
-      - test_dev:
-          filters:  # using regex filters requires the entire branch to match
-            branches:
-              only:  # only branches matching the below regex filters will run
-                - filters:
-          branches:
-            only: master
+  - test_dev:
+    filters:  # using regex filters requires the entire branch to match
+      branches:
+        only: master  # only branches matching the below regex filters will run
 jobs:
   build:
     docker:
