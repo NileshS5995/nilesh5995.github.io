@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  build:
+    filters:
+          branches:
+            only: master
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/gatsby-site
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-npm-deps-{{ checksum "package-lock.json" }}
+            # Fallback cache to be used
+            - v1-npm-deps-
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Gatsby Build
+          command: npm run build
+      - run:
+          name:  Authentication with gitHub
+          command: |
+                git config user.email "nilesh_s@techjoomla.com"
+                git config user.name "nilesh5995"
+      - add_ssh_keys:
+          fingerprints: 
+            - "d4:2b:e2:68:cc:07:68:29:4e:e8:82:76:35:a3:eb:0"
+      - run:
+          name:  Deploy
+          command: npm run deploy
