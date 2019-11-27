@@ -6,6 +6,6 @@ draft: 'false'
 image: /team/peter-van-eijk-711986-unsplash.jpg
 jobtitle: Director
 linkedinurl: www.linkedin.com/pvanijk
-weight: 1
+weight: 2
 ---
 
