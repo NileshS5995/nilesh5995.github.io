@@ -12,7 +12,7 @@ const Team = (props) => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h1>Meet The Our Best Team Ever best  the world KKKK</h1>
+              <h1>Meet The Our Best Team Ever best  the world KKKK and rrr</h1>
               <p>
                 Our team of qualified accountants and financial consultants can help your business
                 at any stage of it’s growth.
